@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.shortcuts import render
 
 # Données temporaires : elles viendront de la base de données plus tard
@@ -28,4 +28,8 @@ def student_list(request):
 
 
 def student_detail(request, id):
-    return HttpResponse(f"Détail de l'étudiant {id}")
+    for student in STUDENTS:
+        if student["id"] == id:
+            context = {"student": student}
+            return render(request, "students/student_detail.html", context)
+    raise Http404("Étudiant introuvable")
