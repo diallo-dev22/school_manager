@@ -1,19 +1,22 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Étudiants · School Manager</title>
-</head>
-<body>
-    <a href="{% url 'home' %}">← Accueil</a>
+{% extends "base.html" %}
+
+{% block title %}Étudiants · School Manager{% endblock %}
+
+{% block content %}
     <h1>Liste des étudiants</h1>
     <p>{{ students|length }} étudiant{{ students|length|pluralize }}</p>
-    <table border="1">
-        <tr><th>N°</th><th>Prénom</th><th>Nom</th><th>Classe</th><th>Statut</th></tr>
+    <table>
+        <tr>
+            <th>N°</th><th>Prénom</th><th>Nom</th>
+            <th>Classe</th><th>Statut</th>
+        </tr>
         {% for student in students %}
         <tr>
             <td>{{ student.id }}</td>
-            <td><a href="{% url 'student_detail' student.id %}">{{ student.first_name }}</a></td>
+            <td>
+                <a href="{% url 'student_detail' student.id %}">
+                    {{ student.first_name }}</a>
+            </td>
             <td>{{ student.last_name|upper }}</td>
             <td>{{ student.classe }}</td>
             <td>{% if student.active %}Actif{% else %}Inactif{% endif %}</td>
@@ -22,5 +25,4 @@
         <tr><td colspan="5">Aucun étudiant inscrit.</td></tr>
         {% endfor %}
     </table>
-</body>
-</html>
+{% endblock %}
