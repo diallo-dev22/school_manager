@@ -9,10 +9,12 @@
 <body>
     <header>
         <strong>School Manager</strong>
-        <nav>
-            <a href="{% url 'home' %}">Accueil</a>
-            <a href="{% url 'student_list' %}">Étudiants</a>
-        </nav>
+<nav>
+    <a href="{% url 'pages:home' %}">Accueil</a>
+    <a href="{% url 'students:list' %}">Étudiants</a>
+    <a href="{% url 'teachers:list' %}">Enseignants</a>
+    <a href="{% url 'pages:about' %}">À propos</a>
+</nav>
     </header>
     <main>
         {% block content %}{% endblock %}

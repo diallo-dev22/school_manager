@@ -14,7 +14,7 @@
         <tr>
             <td>{{ student.id }}</td>
             <td>
-                <a href="{% url 'student_detail' student.id %}">
+                <a href="{% url 'students:detail' student.id %}">
                     {{ student.first_name }}</a>
             </td>
             <td>{{ student.last_name|upper }}</td>

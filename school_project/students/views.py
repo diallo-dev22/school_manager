@@ -1,7 +1,7 @@
-from django.http import HttpResponse, Http404
+from django.http import Http404
 from django.shortcuts import render
 
-# Données temporaires : elles viendront de la base de données plus tard
+# Données temporaires : elles viendront de la base de données à l'étape 8
 STUDENTS = [
     {"id": 1, "first_name": "Awa", "last_name": "Diop",
      "classe": "L1", "active": True},
@@ -12,14 +12,6 @@ STUDENTS = [
     {"id": 4, "first_name": "Ibrahima", "last_name": "Sow",
      "classe": "L3", "active": True},
 ]
-
-
-def home(request):
-    context = {
-        "school_name": "Lycée d'Excellence de Dakar",
-        "nb_classes": 12,
-    }
-    return render(request, "students/home.html", context)
 
 
 def student_list(request):
@@ -33,3 +25,12 @@ def student_detail(request, id):
             context = {"student": student}
             return render(request, "students/student_detail.html", context)
     raise Http404("Étudiant introuvable")
+
+
+def students_by_class(request, classe):
+    selection = []
+    for student in STUDENTS:
+        if student["classe"] == classe:
+            selection.append(student)
+    context = {"students": selection}
+    return render(request, "students/student_list.html", context)

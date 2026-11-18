@@ -6,5 +6,5 @@
     <h1>Bienvenue dans School Manager</h1>
     <p>Établissement : <strong>{{ school_name }}</strong></p>
     <p>Nombre de classes : {{ nb_classes }}</p>
-    <a href="{% url 'student_list' %}">Voir la liste des étudiants</a>
+    <a href="{% url 'students:list' %}">Voir la liste des étudiants</a>
 {% endblock %}
