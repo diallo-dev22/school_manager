@@ -5,6 +5,7 @@ class Student(models.Model):
     first_name = models.CharField("prénom", max_length=100)
     last_name = models.CharField("nom", max_length=100)
     email = models.EmailField("email", unique=True)
+    phone = models.CharField("téléphone", max_length=20, blank=True)
     classe = models.CharField("classe", max_length=10)
     active = models.BooleanField("actif", default=True)
     birth_date = models.DateField("date de naissance", null=True, blank=True)
