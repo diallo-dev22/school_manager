@@ -4,6 +4,7 @@
 
 {% block content %}
     <h1>Liste des étudiants</h1>
+    <p><a href="{% url 'students:create' %}">+ Inscrire un étudiant</a></p>
     <form method="get">
         <input type="text" name="q" value="{{ query }}" placeholder="Nom ou prénom">
         <button type="submit">Rechercher</button>

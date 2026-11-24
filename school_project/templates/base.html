@@ -17,7 +17,12 @@
 </nav>
     </header>
     <main>
-        {% block content %}{% endblock %}
+     {% if messages %}
+     {% for message in messages %}
+     <p class="message {{ message.tags }}">{{ message }}</p>
+     {% endfor %}
+     {% endif %}
+     {% block content %}{% endblock %}
     </main>
     <footer>School Manager · Projet de formation Django</footer>
 </body>

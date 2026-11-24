@@ -9,4 +9,9 @@
     <p>Classe : {{ student.classe }}</p>
     <p>Téléphone : {{ student.phone|default:"Non renseigné" }}</p>
     <p>Statut : {% if student.active %}Actif{% else %}Inactif{% endif %}</p>
+    <p>
+    <a href="{% url 'students:update' student.id %}">Modifier</a>
+    ·
+    <a href="{% url 'students:delete' student.id %}">Supprimer</a>
+    </p>
 {% endblock %}
